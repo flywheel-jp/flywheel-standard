@@ -3,17 +3,16 @@
 Each repository MAY assume that the developer's local environment has correctly
 installed the latest version of the following tools:
 
-* [Homebrew]
-* :beer: [git](https://git-scm.com/)
-* :beer: [Docker](https://www.docker.com/)
+* :rocket: [Homebrew] (macOS)
+* :rocket: [git](https://git-scm.com/)
+* :rocket: [Docker](https://www.docker.com/)
 * Java8
-* :beer: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
-* :beer: [pyenv](https://github.com/pyenv/pyenv)
-* :beer: [Yarn](https://yarnpkg.com/)
-* :beer: [nodenv](https://github.com/nodenv/nodenv)
+* :rocket: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
+* :rocket: [pyenv](https://github.com/pyenv/pyenv)
+* :rocket: [Yarn](https://yarnpkg.com/)
+* :rocket: [nodenv](https://github.com/nodenv/nodenv)
 
-:beer: indicates it is installable using [Homebrew Bundle] in macOS. See
-["Setup with Homebrew Bundle"](#setup-with-homebrew-bundle) below for more information.
+:rocket: indicates it is installable using `bin/setup` and `bin/update`.
 
 ## Prefer Version Manager Over Language Version
 
@@ -23,17 +22,6 @@ are version managers so that each repository can choose the appropriate language
 ## Java8
 
 _TBW_
-
-## Setup with Homebrew Bundle
-
-Once [Homebrew] is installed, you can use the [Homebrew Bundle] out of the box to install
-other dependencies:
-
-```bash
-# git clone https://github.com/flywheel-jp/flywheel-standard
-# cd flywheel-standard
-brew bundle
-```
 
 ## Non-standard Dependencies
 

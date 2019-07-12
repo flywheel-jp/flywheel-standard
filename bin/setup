@@ -1,0 +1,111 @@
+#!/bin/bash
+
+# Setup developer's local machine.
+# See: docs/local_environment.md
+
+# Absolute path of flywheel-jp/flywheel-standard repository
+REPOSITORY_DIR=$(cd $(dirname $0); cd ..; pwd)
+
+is_exists() {
+  command -v "$1" > /dev/null 2>&1
+  return $?
+}
+
+ink() {
+  local open="\033["
+  local close="${open}0m"
+  local black="0;30m"
+  local red="1;31m"
+  local green="1;32m"
+  local yellow="1;33m"
+  local blue="1;34m"
+  local purple="1;35m"
+  local cyan="1;36m"
+  local gray="0;37m"
+  local white="$close"
+  local text="$1"
+  local color="$close"
+  if [ "$#" -eq 2 ]; then
+    text="$2"
+    case "$1" in
+      black | red | green | yellow | blue | purple | cyan | gray | white)
+        eval color="\$$1"
+        ;;
+    esac
+  fi
+  printf "${open}${color}${text}${close}"
+}
+
+logging() {
+  local color=
+  local text="$2"
+
+  case "$1" in
+    TITLE)
+      color=yellow
+      ;;
+    ERROR | WARN)
+      color=red
+      ;;
+    INFO)
+      color=blue
+      ;;
+    SUCCESS)
+      color=green
+      ;;
+    *)
+      text="$1"
+  esac
+
+  timestamp() {
+    ink gray "["
+    ink purple "$(date +%H:%M:%S)"
+    ink gray "] "
+  }
+
+  timestamp; ink "$color" "$text"; echo
+}
+
+setup_macos() {
+  # Install Homebrew
+  if ! is_exists "brew"; then
+    logging INFO "Installing Homebrew."
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    if [[ $? -eq 0 ]]; then
+      logging SUCCESS "Installed Homebrew successfully."
+    else
+      logging ERROR "Failed to install Homebrew."
+      exit 1
+    fi
+  else
+    logging INFO "Skipping install of Homebrew. It is already installed."
+  fi
+
+  # Install dependencies using Homebrew Bundle
+  logging INFO "Installing dependencies using Homebrew Bundle."
+  brew bundle --file="$REPOSITORY_DIR/Brewfile.macos"
+  if [[ $? -eq 0 ]]; then
+    logging SUCCESS "Installed dependencies successfully."
+  else
+    logging ERROR "Failed to install dependencies."
+    exit 1
+  fi
+
+  # Run Docker.app to install docker-compose
+  logging INFO "Open Docker.app"
+  open -a Docker
+}
+
+main() {
+  case ${OSTYPE} in
+    darwin*)
+      setup_macos
+      ;;
+    *)
+      echo "Unsupported environment"
+      exit 1
+      ;;
+  esac
+}
+
+main
