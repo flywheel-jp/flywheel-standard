@@ -29,7 +29,7 @@ _TBW_
 We SHOULD use Docker to resolve non-standard dependencies. Middlewares such as MySQL and Redis
 and executable binaries such as `protoc` make sense to run in Docker.
 
-If it is difficult or inconvenient to using Docker, we MAY ask developers to install non-standard
+If it is difficult or inconvenient to use Docker, we MAY ask developers to install non-standard
 dependencies to their local environment. For example, flywheel-jp/flywheel-terraform requires
 `terraform`. In this case, however, its README.md MUST explain how to install and SHOULD explain
 how to uninstall them.
