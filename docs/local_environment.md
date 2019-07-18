@@ -6,7 +6,7 @@ installed the latest version of the following tools:
 * :rocket: [Homebrew]
 * :rocket: [git](https://git-scm.com/)
 * :rocket: [Docker](https://www.docker.com/)
-* Java8
+* :rocket: [AdoptOpenJDK 8](https://adoptopenjdk.net/)
 * :rocket: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
 * :rocket: [pyenv](https://github.com/pyenv/pyenv)
 * :rocket: [Yarn](https://yarnpkg.com/)
@@ -20,9 +20,12 @@ Except for Java, it is intended not to specify standard language versions. Inste
 them, we expect there are version managers. This allows us to choose the version that best fits
 our requirements.
 
-## Java8
+## Java 8
 
-_TBW_
+For Java, there is no popular version manager so we use OpenJDK 8 provided by AdoptOpenJDK.net 
+by default. See go/java for more details why we use Java 8 provided by AdoptOpenJDK. 
+In [EN-40](https://flywheel-jp.atlassian.net/browse/EN-40), we will evaluate version managers
+for Java.
 
 ## Non-standard Dependencies
 
