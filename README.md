@@ -1,5 +1,7 @@
 # FLYWHEEL Standard
 
+![flywheel-standard](https://img.shields.io/badge/FLYWHEEL-Standard-171b61.svg?style=flat-square)
+
 An experimental repository of documents describing the standardized FLYWHEEL way.
 
 * The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -14,8 +16,8 @@ An experimental repository of documents describing the standardized FLYWHEEL way
 
 ## Badge
 
-Show your repository is following the _flywheel-standard_ → [![flywheel-standard](https://img.shields.io/badge/We_are-FLYWHEEL-171b61.svg?style=flat-square)](https://github.com/flywheel-jp/flywheel-standard)
+Show your repository is following the _flywheel-standard_ → [![flywheel-standard](https://img.shields.io/badge/FLYWHEEL-Standard-171b61.svg?style=flat-square)](https://github.com/flywheel-jp/flywheel-standard)
 
 ```markdown
-[![flywheel-standard](https://img.shields.io/badge/We_are-FLYWHEEL-171b61.svg?style=flat-square)](https://github.com/flywheel-jp/flywheel-standard)
+[![flywheel-standard](https://img.shields.io/badge/FLYWHEEL-Standard-171b61.svg?style=flat-square)](https://github.com/flywheel-jp/flywheel-standard)
 ```
