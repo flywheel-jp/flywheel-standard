@@ -33,13 +33,14 @@ We SHOULD use Docker to resolve non-standard dependencies. Middlewares such as M
 and executable binaries such as `protoc` make sense to run in Docker.
 
 If it is difficult or inconvenient to use Docker, we MAY ask developers to install non-standard
-dependencies to their local environment. For example, flywheel-jp/flywheel-terraform requires
-`terraform`. In this case, however, its README.md MUST explain how to install and SHOULD explain
-how to uninstall them.
+dependencies to their local environment. For example, flywheel-jp/flywheel-terraform expects
+locally installed `terraform`. In this case, however, these dependencies SHOULD be installed and maintained by
+`bin/setup` and `bin/update`; otherwise, we MUST explain how to install them in README.
+We SHOULD document how to uninstall them as well.
 
 ## Related Standards
 
-_None_
+- [Setup Scripts](./setup_scripts.md)
 
 [Homebrew]: https://brew.sh
 [Homebrew Bundle]: https://github.com/Homebrew/homebrew-bundle

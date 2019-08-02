@@ -14,6 +14,20 @@ An experimental repository of documents describing the standardized FLYWHEEL way
   to keep following the standard.
 * All documents MUST be considered as living.
 
+## Setup
+
+To set up a new machine, first clone this repository and then run the included `bin/setup`:
+
+```bash
+bin/setup
+```
+
+When you notice that the origin/master is updated, run the `bin/update` at the edge commit:
+
+```bash
+bin/update
+```
+
 ## Badge
 
 Show your repository is following the _flywheel-standard_ → [![flywheel-standard](https://img.shields.io/badge/FLYWHEEL-Standard-171b61.svg?style=flat-square)](https://github.com/flywheel-jp/flywheel-standard)
