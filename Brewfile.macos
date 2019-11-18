@@ -10,6 +10,7 @@ brew "pipenv"
 brew "pyenv"
 brew "nodenv"
 brew "yarn"
+brew "jsonnet"
 
 tap "adoptopenjdk/openjdk"
 cask "adoptopenjdk/openjdk/adoptopenjdk8"
