@@ -102,10 +102,13 @@ main() {
       setup_macos
       ;;
     *)
-      echo "Unsupported environment"
+      logging ERROR "Unsupported environment"
       exit 1
       ;;
   esac
+
+  logging INFO "Installing Node.js dependencies using yarn"
+  yarn install
 }
 
 main
