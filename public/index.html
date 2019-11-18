@@ -17,12 +17,14 @@
       themeColor: "#171b61",
       loadSidebar: true,
       auto2top: true,
+      alias: {
+        "/.*/_sidebar.md": "/_sidebar.md"
+      },
       ga: "UA-128555166-5",
       plugins: [
         function (hook, vm) {
           hook.beforeEach(function (html) {
-            const path = vm.route.file === "README.md" ? "/README.md" : "/docs/" + vm.route.file
-            const url = "https://github.com/flywheel-jp/flywheel-standard/blob/master" + path
+            const url = "https://github.com/flywheel-jp/flywheel-standard/blob/master/" + vm.route.file
             const edit = "[:memo: Edit Document](" + url + ")\n"
             return edit + html
           })
