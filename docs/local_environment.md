@@ -11,6 +11,7 @@ installed the latest version of the following tools:
 * :rocket: [pyenv](https://github.com/pyenv/pyenv)
 * :rocket: [Yarn](https://yarnpkg.com/)
 * :rocket: [nodenv](https://github.com/nodenv/nodenv)
+* :rocket: [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)
 * :rocket: [jsonnet](https://jsonnet.org/)
 
 :rocket: indicates `bin/setup` and `bin/update` install it.

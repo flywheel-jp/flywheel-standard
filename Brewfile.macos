@@ -6,9 +6,10 @@ tap "homebrew/cask"
 cask "docker"
 
 brew "git"
+brew "kubectl"
+brew "nodenv"
 brew "pipenv"
 brew "pyenv"
-brew "nodenv"
 brew "yarn"
 brew "jsonnet"
 
