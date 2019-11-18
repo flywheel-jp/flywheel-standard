@@ -20,7 +20,7 @@
       alias: {
         "/.*/_sidebar.md": "/_sidebar.md"
       },
-      ga: "UA-128555166-5",
+      ga: location.hostname !== "localhost" ? "UA-128555166-5" : "dummy",
       plugins: [
         function (hook, vm) {
           hook.beforeEach(function (html) {
