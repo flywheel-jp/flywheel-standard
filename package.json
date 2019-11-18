@@ -2,6 +2,9 @@
   "name": "@flywheel-jp/flywheel-standard",
   "private": true,
   "repository": "https://github.com/flywheel-jp/flywheel-standard",
+  "scripts": {
+    "start": "docsify serve public --open"
+  },
   "dependencies": {
     "docsify-cli": "^4.3.0"
   }
