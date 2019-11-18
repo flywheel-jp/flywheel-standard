@@ -11,6 +11,7 @@ installed the latest version of the following tools:
 * :rocket: [pyenv](https://github.com/pyenv/pyenv)
 * :rocket: [Yarn](https://yarnpkg.com/)
 * :rocket: [nodenv](https://github.com/nodenv/nodenv)
+* :rocket: [jsonnet](https://jsonnet.org/)
 
 :rocket: indicates `bin/setup` and `bin/update` install it.
 
@@ -22,8 +23,8 @@ our requirements.
 
 ## Java 8
 
-For Java, there is no popular version manager so we use OpenJDK 8 provided by AdoptOpenJDK.net 
-by default. See go/java for more details why we use Java 8 provided by AdoptOpenJDK. 
+For Java, there is no popular version manager so we use OpenJDK 8 provided by AdoptOpenJDK.net
+by default. See go/java for more details why we use Java 8 provided by AdoptOpenJDK.
 In [EN-40](https://flywheel-jp.atlassian.net/browse/EN-40), we will evaluate version managers
 for Java.
 
