@@ -1,0 +1,23 @@
+name: upload
+on:
+  push:
+    branches:
+      - master
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: GCP Authenticate
+        uses: actions/gcloud/auth@master
+        env:
+          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+      # gsutil skips symlink directory "public/docs"
+      - name: Upload documents to flywheel-mouseion bucket
+        uses: docker://gcr.io/cloud-builders/gsutil
+        with:
+          args: -m rsync -d -r public gs://flywheel-mouseion/flywheel-standard
+      # ... so sync "public/docs" directory manually.
+      - uses: docker://gcr.io/cloud-builders/gsutil
+        with:
+          args: -m rsync -d -r public/docs gs://flywheel-mouseion/flywheel-standard/docs

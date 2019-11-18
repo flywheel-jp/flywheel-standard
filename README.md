@@ -35,3 +35,16 @@ Show your repository is following the _flywheel-standard_ → [![flywheel-standa
 ```markdown
 [![flywheel-standard](https://img.shields.io/badge/FLYWHEEL-Standard-171b61.svg?style=flat-square)](https://github.com/flywheel-jp/flywheel-standard)
 ```
+
+## Preview documents
+
+Run the local server with `yarn start`. This command automatically open docs in default browser. To disable this behavior you may use `--no-open` option:
+
+```bash
+yarn start
+# yarn start --no-open
+```
+
+## Deployment
+
+Every push to `master` branch will upload documents to the [Mouseion](https://github.com/flywheel-jp/mouseion). Deploys happen automatically.
