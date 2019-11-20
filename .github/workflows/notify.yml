@@ -1,0 +1,18 @@
+name: notify
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'docs/**'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Send notification to Slack when master/docs has been updated
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "flywheel-standardが更新されました！"
+          SLACK_USERNAME: "GitHub Action Notifier"
