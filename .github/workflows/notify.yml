@@ -1,0 +1,19 @@
+name: notify
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'docs/**'
+      - 'bin/**'
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Send notification to Slack when master/docs or master/bin has been updated
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"CA7A2D39B\", \"text\":\"FLYWHEEL Standardが変更されました！わーい！\nhttps://flywheel-mouseion.appspot.com/flywheel-standard\"}'
