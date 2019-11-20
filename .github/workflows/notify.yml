@@ -10,10 +10,10 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
       - name: Send notification to Slack when master/docs or master/bin has been updated
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
+        uses: pullreminders/slack-action@v1
         with:
           args: '{\"channel\":\"CA7A2D39B\", \"text\":\"FLYWHEEL Standardが変更されました！わーい！\nhttps://flywheel-mouseion.appspot.com/flywheel-standard\"}'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
