@@ -5,6 +5,7 @@
 See: docs/local_environment.md
 """
 
+import os
 import os.path
 import platform
 import subprocess
@@ -29,6 +30,23 @@ def execute(command: str, error_message: str, prologue: str=None, epilogue: str=
     if epilogue:
         print(epilogue)
 
+def inject(text: str, check: str, to: str) -> None:
+    """Inject the given text string into the specified file if the
+    file doesn't contain the check string.
+
+    Raises:
+        AssertionError: if the text param does not contain the check param
+        FileNotFoundError: if the file does not exist
+    """
+    assert check in text
+
+    with open(to, "r") as f:
+        if check in f.read():
+            return
+    with open(to, "a") as f:
+        f.write(text + "\n")
+        print(f"Append '{text}' to {to}")
+
 def setup_macos() -> None:
     if not shutil.which("brew"):
         execute(
@@ -52,6 +70,47 @@ def setup_macos() -> None:
         prologue="Open Docker.app to install docker-compose",
         error_message="Failed to open Docker.app"
     )
+
+    shell = os.getenv("SHELL", "")
+    if shell.endswith("bash"):
+        file = os.path.expanduser("~/.bash_profile")
+        inject(
+            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi',
+            check='eval "$(pyenv init -)"',
+            to=file
+        )
+        inject(
+            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(nodenv init -)"\nfi',
+            check='eval "$(nodenv init -)"',
+            to=file
+        )
+    elif shell.endswith("zsh"):
+        file = os.path.expanduser("~/.zshenv")
+        inject(
+            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi',
+            check='eval "$(pyenv init -)"',
+            to=file
+        )
+        inject(
+            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(nodenv init -)"\nfi',
+            check='eval "$(nodenv init -)"',
+            to=file
+        )
+    elif shell.endswith("fish"):
+        file = os.path.expanduser("~/.config/fish/config.fish")
+        inject(
+            text='if type -q pyenv\n  pyenv init - | source\nend',
+            check='pyenv init - | source',
+            to=file
+        )
+        inject(
+            text='if type -q nodenv\n  nodenv init - | source\nend',
+            check='nodenv init - | source',
+            to=file
+        )
+    else:
+        print(f"Unsupported shell: {shell}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     system = platform.system()
