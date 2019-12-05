@@ -8,13 +8,13 @@ See: docs/local_environment.md
 import os
 import os.path
 import platform
+import shutil
 import subprocess
 import sys
-import shutil
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
-def execute(command: str, error_message: str, prologue: str=None, epilogue: str=None) -> None:
+def execute(command: str, error_message: str, prologue: str = None, epilogue: str = None) -> None:
     """Execute shell command.
 
     Raises:
@@ -99,13 +99,13 @@ def setup_macos() -> None:
     elif shell.endswith("fish"):
         file = os.path.expanduser("~/.config/fish/config.fish")
         inject(
-            text='if type -q pyenv\n  pyenv init - | source\nend',
-            check='pyenv init - | source',
+            text="if type -q pyenv\n  pyenv init - | source\nend",
+            check="pyenv init - | source",
             to=file
         )
         inject(
-            text='if type -q nodenv\n  nodenv init - | source\nend',
-            check='nodenv init - | source',
+            text="if type -q nodenv\n  nodenv init - | source\nend",
+            check="nodenv init - | source",
             to=file
         )
     else:
