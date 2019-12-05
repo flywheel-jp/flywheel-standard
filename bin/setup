@@ -11,6 +11,7 @@ import platform
 import shutil
 import subprocess
 import sys
+import textwrap
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
@@ -38,14 +39,22 @@ def inject(text: str, check: str, to: str) -> None:
         AssertionError: if the text param does not contain the check param
         FileNotFoundError: if the file does not exist
     """
-    assert check in text
+    dedented = textwrap.dedent(text)
+    indented = textwrap.indent(dedented, "  ")
 
-    with open(to, "r") as f:
-        if check in f.read():
-            return
-    with open(to, "a") as f:
-        f.write(text + "\n")
-        print(f"Append '{text}' to {to}")
+    assert check in dedented
+
+    if os.path.isfile(to):
+        with open(to, "r") as f:
+            if check in f.read():
+                return
+        with open(to, "a") as f:
+            f.write(dedented)
+            print(f"Append to {to}:\n{indented}")
+    else:
+        with open(to, "w") as f:
+            f.write(dedented)
+            print(f"Write to {to}:\n{indented}")
 
 def setup_macos() -> None:
     if not shutil.which("brew"):
@@ -73,40 +82,44 @@ def setup_macos() -> None:
 
     shell = os.getenv("SHELL", "")
     if shell.endswith("bash"):
-        file = os.path.expanduser("~/.bash_profile")
         inject(
-            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi',
-            check='eval "$(pyenv init -)"',
-            to=file
-        )
-        inject(
-            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(nodenv init -)"\nfi',
-            check='eval "$(nodenv init -)"',
-            to=file
+            text=f"""
+            # flywheel-jp/flywheel-standard start
+            export FLYWHEEL_STANDARD_ROOT={PROJECT_DIR}
+            if [ -f "$FLYWHEEL_STANDARD_ROOT/config/config.bash" ]; then
+              source "$FLYWHEEL_STANDARD_ROOT/config/config.bash"
+            fi
+            # flywheel-jp/flywheel-standard end
+            """,
+            check="# flywheel-jp/flywheel-standard",
+            to=os.path.expanduser("~/.bash_profile")
         )
     elif shell.endswith("zsh"):
-        file = os.path.expanduser("~/.zshenv")
         inject(
-            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi',
-            check='eval "$(pyenv init -)"',
-            to=file
-        )
-        inject(
-            text='if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(nodenv init -)"\nfi',
-            check='eval "$(nodenv init -)"',
-            to=file
+            text=f"""
+            # flywheel-jp/flywheel-standard start
+            export FLYWHEEL_STANDARD_ROOT={PROJECT_DIR}
+            if [ -f "$FLYWHEEL_STANDARD_ROOT/config/config.zsh" ]; then
+              source "$FLYWHEEL_STANDARD_ROOT/config/config.zsh"
+            fi
+            # flywheel-jp/flywheel-standard end
+            """,
+            check="# flywheel-jp/flywheel-standard",
+            to=os.path.expanduser("~/.zprofile")
         )
     elif shell.endswith("fish"):
-        file = os.path.expanduser("~/.config/fish/config.fish")
+        config_home = os.getenv("XDG_CONFIG_HOME", "~/.config")
+        conf_d = os.path.expanduser(f"{config_home}/fish/conf.d")
+        os.makedirs(conf_d, exist_ok=True)
         inject(
-            text="if type -q pyenv\n  pyenv init - | source\nend",
-            check="pyenv init - | source",
-            to=file
-        )
-        inject(
-            text="if type -q nodenv\n  nodenv init - | source\nend",
-            check="nodenv init - | source",
-            to=file
+            text=f"""
+            set -x FLYWHEEL_STANDARD_ROOT {PROJECT_DIR}
+            if test -e "$FLYWHEEL_STANDARD_ROOT/config/config.fish"
+              source "$FLYWHEEL_STANDARD_ROOT/config/config.fish"
+            end
+            """,
+            check="",
+            to=f"{conf_d}/flywheel_standard.fish"
         )
     else:
         print(f"Unsupported shell: {shell}")
