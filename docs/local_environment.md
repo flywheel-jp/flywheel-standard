@@ -14,7 +14,7 @@ installed the latest version of the following tools:
 * :rocket: [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)
 * :rocket: [jsonnet](https://jsonnet.org/)
 
-:rocket: indicates `bin/setup` and `bin/update` install it.
+:rocket: indicates `bin/setup` in this repository installs it.
 
 ## Prefer Version Manager Over Language Version
 
@@ -36,8 +36,8 @@ and executable binaries such as `protoc` make sense to run in Docker.
 
 If it is difficult or inconvenient to use Docker, we MAY ask developers to install non-standard
 dependencies to their local environment. For example, flywheel-jp/flywheel-terraform expects
-locally installed `terraform`. In this case, however, these dependencies SHOULD be installed and maintained by
-`bin/setup` and `bin/update`; otherwise, we MUST explain how to install them in README.
+locally installed `terraform`. In this case, however, such dependencies SHOULD be installed and maintained by
+`bin/setup` in that repository; otherwise, we MUST explain how to install them in README.
 We SHOULD document how to uninstall them as well.
 
 ## Related Standards

@@ -22,11 +22,7 @@ To set up a new machine, first clone this repository and then run the included `
 bin/setup
 ```
 
-When you notice that the origin/master is updated, run the `bin/update` at the edge commit:
-
-```bash
-bin/update
-```
+When you notice that the origin/master is updated, run `bin/setup` again at the edge commit.
 
 ## Badge
 
