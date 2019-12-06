@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Send notification to Slack when master/docs or master/bin has been updated
-        uses: pullreminders/slack-action@v1
+        uses: pullreminders/slack-action@v1.0.7
         with:
           args: '{\"channel\":\"CA7A2D39B\", \"text\":\"FLYWHEEL Standardが変更されました！わーい！\nhttps://flywheel-mouseion.appspot.com/flywheel-standard\"}'
         env:
