@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# Absolute path of flywheel-jp/flywheel-standard repository
-REPOSITORY_DIR=$(cd $(dirname $0); cd ..; pwd)
-
-# Run bin/setup
-. $REPOSITORY_DIR/bin/setup
