@@ -12,10 +12,15 @@ import shutil
 import subprocess
 import sys
 import textwrap
+from typing import Optional
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
-def execute(command: str, error_message: str, prologue: str = None, epilogue: str = None) -> None:
+
+def execute(command: str,
+            error_message: str,
+            prologue: Optional[str] = None,
+            epilogue: Optional[str] = None) -> None:
     """Execute shell command.
 
     Raises:
@@ -30,6 +35,7 @@ def execute(command: str, error_message: str, prologue: str = None, epilogue: st
         sys.exit(1)
     if epilogue:
         print(epilogue)
+
 
 def inject(text: str, check: str, to: str) -> None:
     """Inject the given text string into the specified file if the
@@ -55,6 +61,7 @@ def inject(text: str, check: str, to: str) -> None:
         with open(to, "w") as f:
             f.write(dedented)
             print(f"Write to {to}:\n{indented}")
+
 
 def setup_macos() -> None:
     if not shutil.which("brew"):
@@ -124,6 +131,7 @@ def setup_macos() -> None:
     else:
         print(f"Unsupported shell: {shell}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     system = platform.system()
