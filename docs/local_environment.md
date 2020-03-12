@@ -4,6 +4,7 @@ Each repository MAY assume that a developer's local environment has correctly
 installed the latest version of the following tools:
 
 * :rocket: [Homebrew]
+* :rocket: [bash](https://www.gnu.org/software/bash/)
 * :rocket: [git](https://git-scm.com/)
 * :rocket: [Docker](https://www.docker.com/)
 * :rocket: [AdoptOpenJDK 8](https://adoptopenjdk.net/)
