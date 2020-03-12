@@ -5,6 +5,7 @@ cask_args appdir: "/Applications"
 tap "homebrew/cask"
 cask "docker"
 
+brew "bash"
 brew "git"
 brew "kubectl"
 brew "nodenv"
