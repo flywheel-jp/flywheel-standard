@@ -37,6 +37,8 @@ Show your repository is following the _flywheel-standard_ → [![flywheel-standa
 Run the local server with `yarn start`. This command automatically open docs in default browser. To disable this behavior you may use `--no-open` option:
 
 ```bash
+# Run `yarn` or `yarn install` to install dependent tools when you run the following command for the first time.
+
 yarn start
 # yarn start --no-open
 ```
