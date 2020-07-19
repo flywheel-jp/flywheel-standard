@@ -3,19 +3,21 @@
 Each repository MAY assume that a developer's local environment has correctly
 installed the latest version of the following tools:
 
-* :rocket: [Homebrew]
-* :rocket: [bash](https://www.gnu.org/software/bash/)
-* :rocket: [git](https://git-scm.com/)
-* :rocket: [Docker](https://www.docker.com/)
-* :rocket: [AdoptOpenJDK 8](https://adoptopenjdk.net/)
-* :rocket: [Pipenv](https://pipenv.readthedocs.io/en/latest/)
-* :rocket: [pyenv](https://github.com/pyenv/pyenv)
-* :rocket: [Yarn](https://yarnpkg.com/)
-* :rocket: [nodenv](https://github.com/nodenv/nodenv)
-* :rocket: [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)
-* :rocket: [jsonnet](https://jsonnet.org/)
+* [AdoptOpenJDK 8](https://adoptopenjdk.net/)
+* [aws-azure-login](https://github.com/sportradar/aws-azure-login)
+* [awscli](https://aws.amazon.com/cli/)
+* [bash](https://www.gnu.org/software/bash/)
+* [Docker](https://www.docker.com/)
+* [git](https://git-scm.com/)
+* [Homebrew](https://brew.sh)
+* [jsonnet](https://jsonnet.org/)
+* [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)
+* [nodenv](https://github.com/nodenv/nodenv)
+* [Pipenv](https://pipenv.readthedocs.io/en/latest/)
+* [pyenv](https://github.com/pyenv/pyenv)
+* [Yarn](https://yarnpkg.com/)
 
-:rocket: indicates `bin/setup` in this repository installs it.
+`bin/setup` in this repository installs them.
 
 ## Prefer Version Manager Over Language Version
 
@@ -44,6 +46,3 @@ We SHOULD document how to uninstall them as well.
 ## Related Standards
 
 - [Setup Scripts](./setup_scripts.md)
-
-[Homebrew]: https://brew.sh
-[Homebrew Bundle]: https://github.com/Homebrew/homebrew-bundle

@@ -62,6 +62,24 @@ def inject(text: str, check: str, to: str) -> None:
             f.write(dedented)
             print(f"Write to {to}:\n{indented}")
 
+def setup_aws_azure_login(path: str = "/usr/local/bin/aws-azure-login") -> None:
+    """Setup aws-azure-login command
+
+    https://github.com/sportradar/aws-azure-login#docker
+    """
+    if not shutil.which("aws-azure-login"):
+        execute(
+            command=f"sudo curl -o {path} https://raw.githubusercontent.com/sportradar/aws-azure-login/main/docker-launch.sh",
+            prologue="Installing aws-azure-login",
+            error_message="Failed to install aws-azure-login",
+        )
+    if os.path.exists(path) and not os.access(path, os.X_OK):
+        execute(
+            command=f"sudo chmod +x {path}",
+            prologue=f"Make {path} executable",
+            error_message="Failed to make it executable",
+        )
+
 
 def setup_macos() -> None:
     if not shutil.which("brew"):
@@ -75,7 +93,7 @@ def setup_macos() -> None:
         print("Skipping install of Homebrew. It is already installed.")
 
     execute(
-        command=f"brew bundle --file='{PROJECT_DIR}/Brewfile.macos'",
+        command=f"brew bundle --no-lock --file='{PROJECT_DIR}/Brewfile.macos'",
         prologue="Installing dependencies using Homebrew Bundle.",
         epilogue="Installed dependencies successfully.",
         error_message="Failed to install dependencies."
@@ -86,6 +104,8 @@ def setup_macos() -> None:
         prologue="Open Docker.app to install docker-compose",
         error_message="Failed to open Docker.app"
     )
+
+    setup_aws_azure_login()
 
     shell = os.getenv("SHELL", "")
     if shell.endswith("bash"):
