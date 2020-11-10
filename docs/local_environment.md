@@ -8,6 +8,7 @@ installed the latest version of the following tools:
 * [awscli](https://aws.amazon.com/cli/)
 * [bash](https://www.gnu.org/software/bash/)
 * [Docker](https://www.docker.com/)
+* [gh](https://cli.github.com/)
 * [git](https://git-scm.com/)
 * [Homebrew](https://brew.sh)
 * [jsonnet](https://jsonnet.org/)
