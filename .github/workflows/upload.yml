@@ -11,11 +11,11 @@ jobs:
       # skips symlink directory "public/docs"
       - uses: flywheel-jp/mouseion/upload@master
         with:
-          service-account-key: ${{ secrets.GCLOUD_AUTH }}
+          service-account-key: ${{ secrets.MOUSEION_GCP_TOKEN }}
           source: public
       # ... so upload "public/docs" directory.
       - uses: flywheel-jp/mouseion/upload@master
         with:
-          service-account-key: ${{ secrets.GCLOUD_AUTH }}
+          service-account-key: ${{ secrets.MOUSEION_GCP_TOKEN }}
           namespace: flywheel-standard/docs
           source: public/docs
