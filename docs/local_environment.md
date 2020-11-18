@@ -11,6 +11,7 @@ installed the latest version of the following tools:
 * [gh](https://cli.github.com/)
 * [git](https://git-scm.com/)
 * [Homebrew](https://brew.sh)
+* [jq](https://stedolan.github.io/jq/)
 * [jsonnet](https://jsonnet.org/)
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/)
 * [nodenv](https://github.com/nodenv/nodenv)
